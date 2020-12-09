@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+/* CSS styles for this page */
+
+#cvs_1 {
+	--width: 300px;
+	--height: 300px;
+	border: 1px solid black;
+}
+</style>
+<script>
+	
+
+</script>
+</head>
+<body>
+	<div>
+		<canvas id="cvs_1" width="400" height="400"></canvas>
+	</div>
+
+</body>
+
+<script>
+	var canvas = document.getElementById("cvs_1");
+	var ctx = canvas.getContext('2d');
+	
+	var cx=150;
+	var cy=150;
+	var r0=20;
+	var delta=0;
+	var color="#0000ff";
+	
+	//var extent_angle = Math.PI/8;
+	//var shift_angle = 2/3 * Math.PI;
+	
+	function erase_frame() {
+		ctx.clearRect(0,0, canvas.width, canvas.height);
+	}
+	
+	function draw_circle(x, y, radius){
+		ctx.lineWidth = 2;
+		ctx.strokeStyle = color;
+		
+		/*ctx.beginPath();
+		ctx.arc(x, y, radius, -extent_angle, extent_angle);
+		ctx.stroke();
+		
+		ctx.beginPath();
+		ctx.arc(x, y, radius*1.2, -extent_angle, extent_angle);
+		ctx.stroke();
+		
+		ctx.beginPath();
+		ctx.arc(x, y, radius*1.4, -extent_angle, extent_angle);
+		ctx.stroke(); */
+		
+		var extent_angle = Math.PI/4;
+		var shift_angle = -extent_angle/2;
+		var _120_deg = 2/3 * Math.PI;
+		
+		ctx.beginPath();
+		ctx.arc(x, y, radius, shift_angle, extent_angle+shift_angle);
+		ctx.stroke();
+		
+		ctx.beginPath();
+		ctx.arc(x, y, radius*1.2, shift_angle, extent_angle+shift_angle);
+		ctx.stroke();
+		
+		ctx.beginPath();
+		ctx.arc(x, y, radius*1.4, shift_angle, extent_angle+shift_angle);
+		ctx.stroke();
+		
+		//second group of waves
+		shift_angle=shift_angle+_120_deg;
+		
+		ctx.beginPath();
+		ctx.arc(x, y, radius, shift_angle, extent_angle+shift_angle);
+		ctx.stroke();
+		
+		ctx.beginPath();
+		ctx.arc(x, y, radius*1.2, shift_angle, extent_angle+shift_angle);
+		ctx.stroke();
+		
+		ctx.beginPath();
+		ctx.arc(x, y, radius*1.4, shift_angle, extent_angle+shift_angle);
+		ctx.stroke();
+		
+		//third group of waves
+		shift_angle=shift_angle+_120_deg;
+		
+		ctx.beginPath();
+		ctx.arc(x, y, radius, shift_angle, extent_angle+shift_angle);
+		ctx.stroke();
+		
+		ctx.beginPath();
+		ctx.arc(x, y, radius*1.2, shift_angle, extent_angle+shift_angle);
+		ctx.stroke();
+		
+		ctx.beginPath();
+		ctx.arc(x, y, radius*1.4, shift_angle, extent_angle+shift_angle);
+		ctx.stroke();
+	}
+	
+	
+	function motion()
+	{
+		erase_frame();
+		draw_circle(cx, cy, r0+delta);
+		delta=delta+5;
+		if(delta > canvas.width*0.7)
+			delta=0;
+	}
+	
+	//motion();
+	setInterval(motion, 100);
+</script>
+</html>

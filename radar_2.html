@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+/* CSS styles for this page */
+
+.EndPoint { fill:none; stroke:#888888; stroke-width:2 }
+
+.redCircle { fill:none; stroke:red; stroke-width:1 }
+
+</style>
+<script>
+
+</script>
+</head>
+<body>
+	<div>
+		<svg width="200px" height="200px" style="border:1px solid black">
+			 <defs>				  
+				  <linearGradient id="GradientN" x1="0" x2="0" y1="0" y2="1">
+					<stop offset="20%"  stop-color="none" stop-opacity="0"/>
+					<stop offset="70%" stop-color="green" />
+					<stop offset="100%" stop-color="lime"/>
+				  </linearGradient>
+			 </defs>
+			 
+			 <circle class="EndPoint" cx="100" cy="100" r="10" />
+			 <circle class="EndPoint" cx="100" cy="100" r="20" />
+			 <circle class="EndPoint" cx="100" cy="100" r="30" />
+			 <circle class="EndPoint" cx="100" cy="100" r="40" />
+			 <circle class="EndPoint" cx="100" cy="100" r="50" />
+			 
+			<path d="M 100 100 v -70  a 70 70, 0, 0, 1, 70 70 h -70 " fill="url(#GradientN)" opacity="0.5">
+							<animatetransform attributeName="transform"
+                              attributeType="XML"
+                              type="rotate"
+							  from="30 100 100"
+							  to="390 100 100"
+                              dur="3s"
+                              repeatCount="indefinite"/>
+			</path>
+		</svg>
+		
+		<svg width="200px" height="200px" style="border:1px solid black">
+		
+		 <defs>
+			 <radialGradient id="RadialGradient1" cx="0" cy="1" r="1">
+				<stop offset="0%" stop-color="lime"/>
+				<stop offset="30%" stop-color="green" stop-opacity="0.7"/>
+				<stop offset="55%"  stop-opacity="0.2"/>
+				<stop offset="80%" stop-color="green" stop-opacity="0.7"/>
+				<stop offset="100%" stop-color="lime"/>
+			  </radialGradient>
+		 </defs>
+			 <circle class="EndPoint" cx="100" cy="100" r="10" />
+			 <circle class="EndPoint" cx="100" cy="100" r="20" />
+			 <circle class="EndPoint" cx="100" cy="100" r="30" />
+			 <circle class="EndPoint" cx="100" cy="100" r="40" />
+			 <circle class="EndPoint" cx="100" cy="100" r="50" />
+			 
+			<path d="M 100 100 v -70  a 70 70, 0, 0, 1, 70 70 h -70 " fill="url(#RadialGradient1)" opacity="0.5">
+							<animatetransform attributeName="transform"
+                              attributeType="XML"
+                              type="rotate"
+							  from="30 100 100"
+							  to="390 100 100"
+                              dur="3s"
+                              repeatCount="indefinite"/>
+			</path>			 
+		</svg>
+		
+		<br>
+		
+		<svg class="svg_2" width="200px" height="200px" style="border:1px solid black">
+			 
+			 <circle class="circle_1 redCircle" cx="100" cy="100" r="10" />
+	 
+			<line class="line_0" x1="100" y1="100" x2="170" y2="100" stroke-width= "5" stroke="#00ff00" opacity="0.9">
+					<animatetransform attributeName="transform"
+                              attributeType="XML"
+                              type="rotate"
+							  from="0 100 100"
+							  to="360 100 100"
+                              dur="5s"
+                              repeatCount="indefinite"/>
+			</line>
+
+		</svg>
+		
+		<script>
+		
+			function insertAt(parent, child, n) {
+					if (n < 0 || n > parent.childNodes.length) throw new Error("invalid index");
+					else if (n == parent.childNodes.length) parent.appendChild(child);
+					else parent.insertBefore(child, parent.childNodes[n]);
+				}
+				
+			var svg_tag = document.querySelectorAll(".svg_2")[0];
+			var circ = document.querySelectorAll(".svg_2>.circle_1")[0];
+			var ln = document.querySelectorAll(".svg_2>.line_0")[0];
+			
+			for(var i=2;i<=5;i++)
+			{
+				var new_circ = circ.cloneNode(false);
+				new_circ.setAttribute("r", ""+i*10 );
+				insertAt(svg_tag, new_circ, i);			
+			}
+			
+			var center_x=100;
+			var center_y=100;
+			var radius=70;
+			
+			var N=15;
+			
+			for(var i=1; i<=N; i++)
+			{
+				var new_line = ln.cloneNode(true);
+				
+				var rad =  (2*i) * 2* Math.PI /360;
+				var x_coord = radius * Math.cos(rad);
+				var y_coord = radius * Math.sin(rad);
+				
+				x_coord = center_x + x_coord;
+				y_coord = center_y - y_coord;
+				
+				new_line.setAttribute("x2", ""+x_coord);
+				new_line.setAttribute("y2", ""+y_coord);
+				
+				var op = (N-i)/N;
+				op=op*0.5;
+				new_line.setAttribute("opacity", ""+op);
+
+				
+				svg_tag.appendChild(new_line);
+				
+			}
+
+		</script>
+		
+		
+		<svg class="svg_3" width="200px" height="200px" style="border:1px solid black">
+			 <circle class="circle_2 redCircle" cx="100" cy="100" r="10" />
+			 
+			 <path id="path_1" d="M 100 100 v -70  a 70 70, 0, 0, 1, 70 70 h -70 " fill="none" opacity="0.5">
+							<animatetransform attributeName="transform"
+                              attributeType="XML"
+                              type="rotate"
+							  from="0 100 100"
+							  to="360 100 100"
+                              dur="3s"
+                              repeatCount="indefinite"/>		
+			</path>
+			 
+			 <!--<circle class="EndPoint" cx="144.99513267805776" cy="46.37688898167154" r="3"></circle>-->
+		</svg>
+		
+		<script>
+						
+			var svg_tag = document.querySelectorAll(".svg_3")[0];
+			var circ = document.querySelectorAll(".svg_3>.circle_2")[0];
+			var pth = document.getElementById("path_1");
+			
+			
+			for(var i=2;i<=5;i++)
+			{
+				var new_circ = circ.cloneNode(false);
+				new_circ.setAttribute("r", ""+i*10 );
+				insertAt(svg_tag, new_circ, i);			
+			}
+			
+						
+			var center_x=100;
+			var center_y=100;
+			var radius=70;
+			
+			var N=15;
+			
+			var prev_x=undefined;
+			var prev_y=undefined;
+			
+			for(var i=1; i<=N; i++)
+			{
+				//var new_line = ln.cloneNode(true);
+				
+				var rad =  (10*i) * 2* Math.PI /360;
+				var x_coord = radius * Math.cos(rad);
+				var y_coord = radius * Math.sin(rad);
+				
+				x_coord = center_x + x_coord;
+				y_coord = center_y - y_coord;
+				
+				
+
+				
+				if(prev_x != undefined)
+				{
+					//var p = document.createElement("path");
+					var p = pth.cloneNode(true);
+					p.setAttribute("d", "M 100 100 L "+prev_x+" "+prev_y+" L "+x_coord+" "+y_coord+" z" );
+					var green_value = ( 255*(N-i) + 50*i )/N;
+					console.log("green_value="+green_value);
+					p.setAttribute("fill", "rgb(0,"+green_value+",0)");
+					var op = (N-i)/N;
+					op=op*0.5;
+					op=op+0.1
+					p.setAttribute("opacity", ""+op);
+					p.setAttribute("stroke", "none");
+					p.setAttribute("stroke-width", "0");
+					svg_tag.appendChild(p);
+				}
+				
+				prev_x = x_coord;
+				prev_y = y_coord;
+				
+			}
+		</script>
+	</div>
+	
+</body>
+</html>

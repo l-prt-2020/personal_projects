@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+/* CSS styles for this page */
+
+.mark_2 {
+	position: absolute;
+
+	border: 2px solid #bbb;
+	width:1px;
+	height: 10px;
+}
+
+.seconds-hand {
+	position: absolute;
+	width: 2px;
+	height: 2px;
+
+	background: red;
+	top: 120px;
+	left:200px;
+
+	transform: rotate(180deg);
+
+}
+
+.seconds-hand-inner {
+	--position: relative;
+	width: 1px;
+	height: 70px;
+	background: orange;
+}
+
+.minutes-hand {
+	position: absolute;
+	width: 2px;
+	height: 2px;
+
+	background: blue;
+	top: 120px;
+	left:200px;
+
+	transform: rotate(180deg);
+}
+
+.minutes-hand-inner {
+	width: 3px;
+	height: 50px;
+	background: blue;
+}
+
+.hours-hand {
+	position: absolute;
+	width: 2px;
+	height: 2px;
+
+	background: gray;
+	top: 120px;
+	left:200px;
+
+	transform: rotate(180deg);
+}
+
+.hours-hand-inner {
+	width: 5px;
+	height: 40px;
+	background: gray;
+}
+
+</style>
+
+</head>
+<body>
+	<div>
+		<div id="clock"><div>
+		<div class="seconds-hand" >
+			<div class="seconds-hand-inner"></div>
+		</div>
+		<div class="minutes-hand">
+			<div class="minutes-hand-inner"></div>
+		</div>
+		<div class="hours-hand">
+			<div class="hours-hand-inner"></div>
+		</div>
+	</div>
+	
+	<span id="digital_clock" 
+		style="border: 1px solid blue; font-size: 25px;
+		position:relative; top: 240px;  left: 150px;">
+	</span>
+	
+
+</body>
+
+<script>
+	var diameter = 100; 
+	var diameter_2 = 80;
+	//center coordinates
+	center_x = 200;
+	center_y = 120;
+	
+	var digit_span_width = 20;
+	
+	function draw_ticks()
+	{
+		var clock = document.getElementById("clock");
+
+		for(var i=0; i<=59; i++)
+		{
+			var angle = 6*i;
+			var angle_2 = -angle + 90;
+			var rad = 2* Math.PI * angle_2 /360; 
+			var x_coord = diameter * Math.cos(rad);
+			var y_coord = diameter * Math.sin(rad);
+			
+			//console.log(x_coord+","+y_coord);
+			
+			x_coord = center_x + x_coord;
+			y_coord = center_y - y_coord;
+
+			var stl = "left: "+x_coord+"px; top: "+y_coord+"px; "+
+			" transform: rotate("+angle+"deg) ;" ;
+			
+			var sp = document.createElement("span");
+
+			sp.className="mark_2";
+			sp.style=stl;
+			clock.appendChild(sp);
+
+		}
+		
+		for(var i=0; i<=11; i++)
+		{
+			var angle = 30*i;
+			var angle_2 = -angle + 90;
+			var rad = 2* Math.PI * angle_2 /360; 
+			var x_coord = diameter_2 * Math.cos(rad);
+			var y_coord = diameter_2 * Math.sin(rad);
+			
+			x_coord = center_x + x_coord - digit_span_width/2;
+			y_coord = center_y - y_coord;
+			
+			var stl = "left: "+x_coord+"px; top: "+y_coord+"px; " +
+			"position: absolute; font-size: 20px; text-align:center; "+
+			"width: "+digit_span_width+"px;";
+			
+			var sp = document.createElement("span");
+			sp.textContent = i;
+			if(i==0)
+				sp.textContent = 12;
+			sp.style=stl;
+			clock.appendChild(sp);
+		}
+	}
+	
+	draw_ticks();
+	
+
+	
+	function run() {
+		var now = new Date();
+		var hours = now.getHours();
+		var minutes = now.getMinutes();
+		var seconds = now.getSeconds();
+		
+		var digital = document.getElementById("digital_clock");
+		digital.textContent = hours+":"+minutes+":"+seconds;
+		
+		var sh_rotate_angle = 360 * seconds / 60;
+		sh_rotate_angle= sh_rotate_angle + 180; 
+		
+		var mh_rt_angle = 360 * minutes /60;
+		mh_rt_angle = mh_rt_angle + 180;
+		
+		var hh_rt_angle = 360 * hours /12;
+		hh_rt_angle = hh_rt_angle + 180;
+		
+		var sh = document.getElementsByClassName("seconds-hand")[0];
+		var stl = " top:"+center_y+"px; left:"+center_x+"px;"+
+		"transform: rotate("+sh_rotate_angle+"deg);";
+		sh.style=stl;
+		
+		var mh = document.getElementsByClassName("minutes-hand")[0];
+		mh.style = " top:"+center_y+"px; left:"+center_x+"px;"+
+		"transform: rotate("+mh_rt_angle+"deg);";
+		
+		var hh = document.getElementsByClassName("hours-hand")[0];
+		hh.style = " top:"+center_y+"px; left:"+center_x+"px;"+
+		"transform: rotate("+hh_rt_angle+"deg);";
+	}
+	
+	setInterval(run, 1000);
+	
+</script>
+</html>
