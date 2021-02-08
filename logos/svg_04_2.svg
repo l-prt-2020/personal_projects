@@ -1,0 +1,36 @@
+<svg 	version="1.1" 	xmlns="http://www.w3.org/2000/svg" 	
+	id="svg_2" width="300" height="150" >
+	
+	<style>
+		text {
+			font-size: 30px; 
+			font-family: "Consolas";
+			font-weight: 900;
+			letter-spacing: 4px;
+		}
+		
+		#h1, #f1 {
+			transform: scale(-1, -1);
+			fill: #aaccaa;
+		}
+	</style>
+	
+	<rect x="9" y="29"  width="141" height="23" fill="black" />
+	
+	<rect x="150" y="52"  width="141" height="23.5" fill="black" />
+	
+	<text id="h0" fill="white" x="10" y="50" >HARVARD</text>
+			
+	<text id="f0"  fill="white" x="151" y="73.5" >FROST</text>
+	
+	<g  style="transform: translate(300px, 40.5px);">
+		<text id="h1"  x="10" y="10" >HARVARD</text>
+	</g>
+	
+	<g  style="transform: translate(159.5px, 64px);">
+		<text id="f1"   x="10" y="10" >FROST</text>
+	</g>
+	
+	
+	
+</svg>

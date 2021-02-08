@@ -1,0 +1,22 @@
+<svg 	version="1.1" 	xmlns="http://www.w3.org/2000/svg" 	
+	id="svg_2" width="300" height="150" >
+	
+	<style>
+		#h2, #f2 {
+			font-size: 30px; 
+			font-family: "Consolas";
+			font-weight: 900;
+			letter-spacing: 4px;
+		}
+		
+		#f2 {
+			transform: scale(-1, -1);
+		}
+	</style>
+	
+	<text id="h2" fill="black" x="10" y="50" >HARVARD</text>
+	
+	<g id="g0" style="transform: translate(159.5px, 70px);">		
+		<text id="f2"  fill="black" x="10" y="10" >FROST</text>
+	</g>
+</svg>
