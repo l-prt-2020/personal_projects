@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+/* CSS styles for this page */
+
+</style>
+<script>
+	console.log('hello world');
+
+</script>
+</head>
+<body>
+	<p style=" display: flex;flex-direction: column; align-items: center;">
+		<span style="font-style: italic; background:#ffffaa;">
+			[tested on Chrome, Chromium and Opera]
+		</span>
+		<br>
+		<span style="font-style: italic; background:#eeeeee;">
+			[if anything seems too small or unclear, please use zoom levels such as 150 %]
+		</span>
+	</p>
+	<div style="color:#4488ff; font-family: 'Impact'; letter-spacing: 2px; word-spacing: 5px;">
+		a subset of fonts supported by Chromium browser:
+	</div>
+	<br>
+	
+	<section id="container">
+	
+	</section>
+	
+	<script>
+		var fonts = ['Gungsuh', 'Estrangelo Edessa', 'Gautami',
+		'Dotum', 'Impact', 'Kartika', 'Lucida Console',
+		'Mangal', 'MingLiU-ExtB', 'MS Gothic', 'MV Boli',
+		'Nyala', 'Segoe Script', 'NSimSun', 'Microsoft Yi Baiti', 
+		'Tahoma', 'Andalus', 'Lucida Sans Unicode', 'Comic Sans MS',
+		'Consolas', 'Franklin Gothic', 'Gabriola', 'Georgia', 
+		'Segoe Print', 'Verdana', 'Webdings', 'Century', 'Cambria',
+		'Wingdings 3', 'Pristina', 'Papyrus', 'Mistral', 'Lucida Handwriting', 
+		'Freestyle Script', 'Bradley Hand ITC', 'Algerian', 'Bernard MT', 'Britannic', 
+		'Broadway', 'Brush Script MT', 'Harlow Solid', 'Harrington', 
+		'Jokerman', 'Lucida Calligraphy', 'Magneto', 'Niagara Solid', 
+		'Old English Text MT', 'Parchment', 'Informal Roman', 
+		'Showcard Gothic', 'Stencil', 'Vivaldi', 'Script MT', 
+		'Perpetua Titling MT', 'OCR A', 'Lucida Sans', 'Goudy Stout', 'Gloucester MT', 
+		'Forte', 'Felix Titling', 'Elephant', 'Copperplate Gothic', 
+		'Arial Rounded MT', 'Agency FB', 'Bookshelf Symbol 7'];
+		
+		var parent = document.getElementById("container");
+		  
+		for(var i=0; i<fonts.length; i++)
+		{
+			console.log(fonts[i]);
+			
+			var dv = document.createElement("div");
+			dv.textContent='ABCDEFGHIJKLMNOPQRSTUVWXYZ 1234567890 ';
+			dv.style="font-family: '"+fonts[i]+"';";
+			
+			var sp= document.createElement("span");
+			sp.textContent=' '+fonts[i];
+			sp.style="font-family: Arial; color: blue; margin-left: 10px;"
+			dv.appendChild(sp);
+			
+			parent.appendChild(dv);
+		}
+		
+		
+
+		
+	</script>
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+/* CSS styles for this page */
+
+html {
+	font-size: 12px;
+}
+
+section {
+	width: 620px;
+	display: grid;
+    grid-template-columns: 1fr 1fr;
+	grid-gap: 20px;
+}
+
+section>article{
+	--border: 2px solid gold;
+}
+
+section>article:nth-child(1) {
+	text-align: right;
+}
+
+section>article>p {
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+.semicircle {
+	float: right;
+	--border: 2px solid cyan;
+	width: 150px;
+	height: 300px;
+	--shape-outside: inset(50px 0px 50px 50px  round 0px);
+	shape-outside: circle(70px at 155px 143px );
+}
+
+section>article:nth-child(2)>.semicircle {
+	--border: 2px solid magenta;
+	float: left;
+	shape-outside: circle(70px at -5px 143px );
+}
+
+.container {
+	--border: 2px dashed green;
+	width: 620px;
+	  display: flex;
+    justify-content: center;
+}
+
+.round {
+	--border: 2px dotted blue;
+	width: 500px;
+	margin-top: 20px;
+}
+
+.round>p {
+	margin-top: 0px;
+	margin-bottom: 5px;
+	text-align: justify;
+	
+}
+
+.margin_left {
+	width: 200px;
+	height: 250px;
+	--background: teal;
+	float: left;
+	shape-outside: polygon( 0px 0px, 100px 0px,
+							0px 110px, 
+							100px 220px, 0px 220px);
+}
+
+.margin_right {
+	width: 200px;
+	height: 250px;
+	--background: skyblue;
+	float: right;
+	shape-outside: polygon(200px 0px, 100px 0px, 
+						   200px 110px, 
+						   100px 220px, 200px 220px);
+}
+
+#svg1 {
+	--border: 2px solid red;
+	position: absolute;
+	z-index: -1;
+	top: 308px;
+	left: 40px;
+}
+
+</style>
+<script>
+	console.log('hello world');
+
+</script>
+</head>
+<body>
+	<section>
+		<article>
+			<div class="semicircle"></div>
+		
+			<p>London Edinburgh Birmingham Manchester Liverpool 
+			Nottingham Leeds Southampton Sheffield Glasgow Bristol 
+			York Cardiff Cambridge Norwich Reading 
+			Newcastle Leicester Middlesbrough 
+			Aberdeen Plymouth Swansea Hastings Portsmouth Coventry 
+			Oxford Bournemouth </p>
+			
+			<p>London Edinburgh Birmingham Manchester Liverpool 
+			Nottingham Leeds Southampton Sheffield Glasgow Bristol 
+			York Cardiff Cambridge Norwich Reading 
+			Newcastle Leicester Middlesbrough 
+			Aberdeen Plymouth Swansea Hastings Portsmouth Coventry 
+			Oxford Bournemouth </p>
+			
+			<p>London Edinburgh Birmingham Manchester Liverpool 
+			Nottingham Leeds Southampton Sheffield Glasgow Bristol 
+			York Cardiff Cambridge Norwich Reading 
+			Newcastle Leicester Middlesbrough 
+			Aberdeen Plymouth Swansea Hastings Portsmouth Coventry 
+			Oxford Bournemouth </p>
+		</article>
+		
+		<article>
+			<div class="semicircle"></div>
+			
+			<p>London Edinburgh Birmingham Manchester Liverpool 
+			Nottingham Leeds Southampton Sheffield Glasgow Bristol 
+			York Cardiff Cambridge Norwich Reading 
+			Newcastle Leicester Middlesbrough 
+			Aberdeen Plymouth Swansea Hastings Portsmouth Coventry 
+			Oxford Bournemouth </p>
+			
+			<p>London Edinburgh Birmingham Manchester Liverpool 
+			Nottingham Leeds Southampton Sheffield Glasgow Bristol 
+			York Cardiff Cambridge Norwich Reading 
+			Newcastle Leicester Middlesbrough 
+			Aberdeen Plymouth Swansea Hastings Portsmouth Coventry 
+			Oxford Bournemouth </p>
+			
+			<p>London Edinburgh Birmingham Manchester Liverpool 
+			Nottingham Leeds Southampton Sheffield Glasgow Bristol 
+			York Cardiff Cambridge Norwich Reading 
+			Newcastle Leicester Middlesbrough 
+			Aberdeen Plymouth Swansea Hastings Portsmouth Coventry 
+			Oxford Bournemouth </p>
+		</article>
+	</section>
+	
+	<div class="container">
+		<div class="round">
+				<div class="margin_left"></div>
+				<div class="margin_right"></div>
+				<div></div>
+					<p>London Edinburgh Birmingham Manchester Liverpool 
+				Nottingham Leeds Southampton Sheffield Glasgow Bristol 
+				York Cardiff Cambridge Norwich Reading 
+				Newcastle Leicester Middlesbrough 
+				Aberdeen Plymouth Swansea Hastings Portsmouth Coventry 
+				Oxford Bournemouth </p>
+				
+							<p>London Edinburgh Birmingham Manchester Liverpool 
+				Nottingham Leeds Southampton Sheffield Glasgow Bristol 
+				York Cardiff Cambridge Norwich Reading 
+				Newcastle Leicester Middlesbrough 
+				Aberdeen Plymouth Swansea Hastings Portsmouth Coventry 
+				Oxford Bournemouth </p>
+				
+											<p>London Edinburgh Birmingham Manchester Liverpool 
+				Nottingham Leeds Southampton Sheffield Glasgow Bristol 
+				York Cardiff Cambridge Norwich Reading 
+				Newcastle Leicester Middlesbrough 
+				Aberdeen Plymouth Swansea Hastings Portsmouth Coventry 
+				Oxford  Bournemouth</p>
+				
+				<svg id="svg1" width="560px" height="280px" >
+					<!--<polyline points="100 240, 10 130, 120 3, 440 3, 550 130, 460 240, 100 240" style="fill:none;stroke:#8888ff;stroke-width:5"></polyline>-->
+					
+					<polyline points="70 210, 10 130, 80 40" style="fill:none;stroke:#bbbbbb;stroke-width:15"></polyline>
+					<polyline points=" 480 40, 550 130, 490 210" style="fill:none;stroke:#bbbbbb;stroke-width:15"></polyline>
+				</svg>
+		</div>
+	</div>
+</body>
+</html>
